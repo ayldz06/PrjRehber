@@ -14,9 +14,8 @@ namespace KisiApi.Migrations
                     uuid = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ad = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
-                    soyad = table.Column<int>(type: "integer", maxLength: 50, nullable: false),
-                    firma = table.Column<int>(type: "integer", maxLength: 150, nullable: false),
-                    iletisimid = table.Column<int>(type: "integer", nullable: false)
+                    soyad = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    firma = table.Column<string>(type: "character varying(150)", maxLength: 150, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,7 +31,8 @@ namespace KisiApi.Migrations
                     telefonno = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     email = table.Column<int>(type: "integer", maxLength: 50, nullable: false),
                     konum = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
-                    bilgiicerigi = table.Column<string>(type: "text", nullable: true)
+                    bilgiicerigi = table.Column<string>(type: "text", nullable: true),
+                    uuid = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

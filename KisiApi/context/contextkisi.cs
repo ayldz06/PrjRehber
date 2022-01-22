@@ -14,8 +14,8 @@ namespace KisiApi.context
         {
 
         }
-        //public virtual DbSet<Kisi> Kisiler { get; set; }
-        //public virtual DbSet<KisiBilgileri> KisiBilgileri { get; set; }
+       public virtual DbSet<Kisi> Kisi { get; set; }
+        public virtual DbSet<KisiBilgileri> KisiBilgileri { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(contextkisi).Assembly);

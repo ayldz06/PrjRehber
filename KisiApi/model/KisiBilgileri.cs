@@ -14,5 +14,6 @@ namespace KisiApi.model
         public int email { get; set; }
         public string konum { get; set; }
         public string bilgiicerigi { get; set; }
+        public int uuid { get; set; }
     }
 }

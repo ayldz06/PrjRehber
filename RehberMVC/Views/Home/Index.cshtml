@@ -1,0 +1,54 @@
+﻿@using RehberMVC.Models
+@model List<Kisi>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-group" method="post">
+            <div class="form-group">
+                <label>Ad</label>
+                <input type="text" class="form-control" id="ad" aria-describedby="ad" placeholder="Ad giriniz..." name="ad">
+            </div>
+            <div class="form-group">
+                <label>Soyad</label>
+                <input type="text" class="form-control" id="soyad" placeholder="Soyad giriniz..." name="soyad">
+            </div>
+            <div class="form-group">
+                <label>Firma</label>
+                <input type="text" class="form-control" id="firma" placeholder="Firma giriniz..." name="firma">
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">AD</th>
+                    <th scope="col">SOYAD</th>
+                    <th scope="col">FİRMA</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>@item.uuid</th>
+                        <td>@item.ad</td>
+                        <td>@item.soyad</td>
+                        <td>@item.firma</td>
+                        <td><a href="#" class="btn btn-secondary btn-sm">İletişim Bilgisi Ekle</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

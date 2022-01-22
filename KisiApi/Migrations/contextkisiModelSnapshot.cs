@@ -29,16 +29,13 @@ namespace KisiApi.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<int>("firma")
+                    b.Property<string>("firma")
                         .HasMaxLength(150)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(150)");
 
-                    b.Property<int>("iletisimid")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("soyad")
+                    b.Property<string>("soyad")
                         .HasMaxLength(50)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("uuid");
 
@@ -66,6 +63,9 @@ namespace KisiApi.Migrations
                     b.Property<string>("telefonno")
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
+
+                    b.Property<int>("uuid")
+                        .HasColumnType("integer");
 
                     b.HasKey("iletisimid");
 
