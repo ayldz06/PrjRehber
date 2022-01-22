@@ -52,9 +52,9 @@ namespace KisiApi.Migrations
                     b.Property<string>("bilgiicerigi")
                         .HasColumnType("text");
 
-                    b.Property<int>("email")
+                    b.Property<string>("email")
                         .HasMaxLength(50)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("konum")
                         .HasMaxLength(50)

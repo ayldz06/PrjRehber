@@ -14,7 +14,7 @@ namespace KisiApi.context
         {
 
         }
-       public virtual DbSet<Kisi> Kisi { get; set; }
+         public virtual DbSet<Kisi> Kisi { get; set; }
         public virtual DbSet<KisiBilgileri> KisiBilgileri { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

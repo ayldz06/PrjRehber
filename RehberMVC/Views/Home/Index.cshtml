@@ -34,6 +34,7 @@
                     <th scope="col">SOYAD</th>
                     <th scope="col">FİRMA</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +45,8 @@
                         <td>@item.ad</td>
                         <td>@item.soyad</td>
                         <td>@item.firma</td>
-                        <td><a href="#" class="btn btn-secondary btn-sm">İletişim Bilgisi Ekle</a></td>
+                        <td><a href="#" class="btn btn-secondary btn-sm iletisimID" onclick="SetIletisimID(@item.uuid)" data-toggle="modal" data-target="#iletisimMdl">İletişim Bilgisi Ekle</a></td>
+                        <td><a href="/Home/IletisimBilgileri?uuid=@item.uuid" class="btn btn-secondary btn-sm">İletişim Bilgilerini Getir</a></td>
                     </tr>
                 }
 
@@ -52,3 +54,50 @@
         </table>
     </div>
 </div>
+
+<div class="modal fade" id="iletisimMdl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("IletisimBilgileri", "Home", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input type="text" class="form-control" id="uuid" aria-describedby="ad" readonly name="uuid">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="text" class="form-control" id="telefonno" aria-describedby="ad" placeholder="Telefon Numarası giriniz..." name="telefonno">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email giriniz..." name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Konum</label>
+                        <input type="text" class="form-control" id="konum" placeholder="Konum giriniz..." name="konum">
+                    </div>
+                    <div class="form-group">
+                        <label>Konum</label>
+                        <input type="text" class="form-control" id="bilgiicerigi" placeholder="Bilgi İçeriği giriniz..." name="bilgiicerigi">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                }
+            </div>
+        </div>
+    </div>
+   
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function SetIletisimID(id) {
+        $("#uuid").val(id);
+    }
+</script>

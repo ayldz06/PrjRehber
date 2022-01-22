@@ -29,7 +29,7 @@ namespace KisiApi.Migrations
                     iletisimid = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     telefonno = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
-                    email = table.Column<int>(type: "integer", maxLength: 50, nullable: false),
+                    email = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     konum = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     bilgiicerigi = table.Column<string>(type: "text", nullable: true),
                     uuid = table.Column<int>(type: "integer", nullable: false)

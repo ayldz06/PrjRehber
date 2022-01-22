@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KisiApi.model
+namespace RehberMVC.Models
 {
     public class KisiBilgileri
     {
-        [Key]
         public int iletisimid { get; set; }
         public string telefonno { get; set; }
         public string email { get; set; }

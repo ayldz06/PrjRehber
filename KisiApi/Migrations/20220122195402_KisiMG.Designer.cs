@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace KisiApi.Migrations
 {
     [DbContext(typeof(contextkisi))]
-    [Migration("20220122190200_KisiMG")]
+    [Migration("20220122195402_KisiMG")]
     partial class KisiMG
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,9 +54,9 @@ namespace KisiApi.Migrations
                     b.Property<string>("bilgiicerigi")
                         .HasColumnType("text");
 
-                    b.Property<int>("email")
+                    b.Property<string>("email")
                         .HasMaxLength(50)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("konum")
                         .HasMaxLength(50)

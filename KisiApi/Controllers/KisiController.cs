@@ -36,6 +36,8 @@ namespace KisiApi.Controllers
         {
             var kisiler = _contextKisi.Kisi.ToList();
             return Ok(kisiler.ToList());
+            //return Ok("A");
         }
+       
     }
 }

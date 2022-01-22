@@ -1,0 +1,32 @@
+﻿@using RehberMVC.Models
+@model List<KisiBilgileri>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Telefon</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Konum</th>
+                    <th scope="col">Bilgi İçeriği</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.iletisimid</td>
+                        <td>@item.telefonno</td>
+                        <td>@item.email</td>
+                        <td>@item.konum</td>
+                        <td>@item.bilgiicerigi</td>
+                        <td><a href="/Home/IletisimBilgileriSil?iletisimid=@item.iletisimid&uuid=@item.uuid" data-method="delete" class="btn btn-success">Sil</a></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
