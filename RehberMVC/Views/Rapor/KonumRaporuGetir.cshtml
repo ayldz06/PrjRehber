@@ -1,0 +1,27 @@
+﻿@using RehberMVC.Models
+@model List<KonumRapor>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Konum</th>
+                    <th scope="col">Telefon Sayısı</th>
+                    <th scope="col">Kişi Sayısı</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Konum</td>
+                        <td>@item.TelefonSayisi</td>
+                        <td>@item.KisiSayisi</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

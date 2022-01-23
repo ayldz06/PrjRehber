@@ -50,7 +50,7 @@ namespace RehberMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Rapor}/{action=Index}/{id?}");
             });
         }
     }
