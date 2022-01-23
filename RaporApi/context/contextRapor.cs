@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RaporApi.model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,7 @@ namespace RaporApi.context
         {
 
         }
-        //public virtual DbSet<Kisi> Kisiler { get; set; }
-        //public virtual DbSet<KisiBilgileri> KisiBilgileri { get; set; }
+        public virtual DbSet<Rapor> Rapor { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(contextRapor).Assembly);

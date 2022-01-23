@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RaporApi.context;
 using RaporApi.model;
 using System;
 using System.Collections.Generic;
@@ -15,41 +16,51 @@ namespace RaporApi.Controllers
     [ApiController]
     public class RaporController : ControllerBase
     {
+
         private string urlRaporBilgileri = "https://localhost:44396/api/Rapor";
-        private const string QueueName = @".\private$\KonumRaporMQ";
-        [HttpGet]
-        public async Task<IActionResult> IndexAsync()
-        {
-            MessageQueue queue;
-            queue = GetMQueye();
+        private readonly contextRapor _rpContext;
 
-            List<KonumRapor> _konumRapor = new List<KonumRapor>();
-            using var client = new HttpClient();
-            var response = await client.GetAsync(urlRaporBilgileri);
-            string result = response.Content.ReadAsStringAsync().Result;
-            var data = JsonConvert.DeserializeObject<List<KonumRapor>>(result);
-            return Ok(data);
+        public RaporController(contextRapor contx)
+        {
+            _rpContext = contx;
         }
-
-        private MessageQueue GetMQueye()
+        [HttpGet]
+        public IActionResult IndexAsync()
         {
-            MessageQueue queue = null;
-            if (MessageQueue.Exists(QueueName))
+            msqm mq = new msqm();
+            if (mq.msmqGet())
             {
-                queue = new MessageQueue(QueueName);
+                if(SetRaporDB())
+                    return Ok("True");
+                else
+                    return Ok("False");
             }
             else
-            {
-                try
-                {
-                    queue = MessageQueue.Create(QueueName, true);
-                }
-                catch (Exception ex)
-                {
-                    throw;
-                }
-            }
-            return queue;
+                return Ok("False");
         }
+
+   
+        public bool SetRaporDB()
+        {
+            bool result = false;
+            try
+            {
+                Rapor rp = new Rapor();
+                rp.uuid = 0;
+                rp.rapordurumu = "Hazırlanıyor";
+                rp.raportaleptarihi = DateTime.Now;
+                _rpContext.Add(rp);
+                if (_rpContext.SaveChanges() > 0)
+                    result = true;
+                else
+                    result = false;
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
+
     }
 }
